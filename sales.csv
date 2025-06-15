@@ -1,0 +1,8 @@
+import pandas as pd
+
+df = pd.read_csv("../sales.csv")
+df["month"] = pd.to_datetime(df.date).dt.to_period("M")
+pivot = df.groupby("month").price.sum()
+
+print("Mesečni prihod (RSD):")
+print(pivot.to_string())
