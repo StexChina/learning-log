@@ -1,0 +1,1 @@
+python\nimport csv, collections, datetime\nrows = csv.DictReader(open('sales.csv', newline=''))\nmonths = collections.Counter()\nfor r in rows:\n m = datetime.datetime.strptime(r['date'], '%Y-%m-%d').strftime('%Y-%m')\n months[m] += int(r['price'])\nprint('Mesečni prihod (RSD):')\nfor k, v in sorted(months.items()):\n print(k, v)\n
